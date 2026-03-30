@@ -4,6 +4,7 @@ High School Management System API
 A super simple FastAPI application that allows students to view and sign up
 for extracurricular activities at Mergington High School.
 """
+# python src/app.py
 
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
@@ -130,3 +131,8 @@ def unregister_from_activity(activity_name: str, email: str):
     # Remove student
     activity["participants"].remove(email)
     return {"message": f"Unregistered {email} from {activity_name}"}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
